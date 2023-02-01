@@ -13,7 +13,7 @@ describe("<App /> component", () => {
     AppWrapper = shallow(<App />);
   });
 
-  test("render list of events", () => {
+  test("renders list of events", () => {
     expect(AppWrapper.find(EventList)).toHaveLength(1);
   });
 

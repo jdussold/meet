@@ -83,10 +83,22 @@ describe("<CitySearch /> component", () => {
   });
   test("blurring the CitySearch input hides the suggestions list", () => {
     CitySearchWrapper.find(".city").simulate("focus");
-    CitySearchWrapper.find(".city").simulate("blur");
-    expect(CitySearchWrapper.state("showSuggestions")).toBe(false);
-    expect(CitySearchWrapper.find(".suggestions").prop("style")).toEqual({
-      display: "none",
+    CitySearchWrapper.find(".suggestions li").first().simulate("click");
+
+    return new Promise((resolve) => setTimeout(resolve, 0)).then(() => {
+      CitySearchWrapper.find(".city").simulate("blur");
+      expect(CitySearchWrapper.state("showSuggestions")).toBe(false);
+      expect(CitySearchWrapper.find(".suggestions").prop("style")).toEqual({
+        display: "none",
+      });
+    });
+  });
+  test("blurring the CitySearch input hides the suggestions list_2", () => {
+    CitySearchWrapper.find(".city").simulate("focus");
+    CitySearchWrapper.find(".suggestions li").first().simulate("click");
+
+    return new Promise((resolve) => setTimeout(resolve, 300)).then(() => {
+      expect(CitySearchWrapper.state("showSuggestions")).toBe(false);
     });
   });
 });

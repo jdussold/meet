@@ -26,6 +26,12 @@ class CitySearch extends Component {
     this.props.updateEvents(suggestion);
   };
 
+  handleInputBlur = () => {
+    setTimeout(() => {
+      this.setState({ showSuggestions: false });
+    }, 300);
+  };
+
   render() {
     return (
       <div className="CitySearch">
@@ -38,9 +44,7 @@ class CitySearch extends Component {
           onFocus={() => {
             this.setState({ showSuggestions: true });
           }}
-          onBlur={() => {
-            this.setState({ showSuggestions: false });
-          }}
+          onBlur={this.handleInputBlur}
         />
         <ul
           className="suggestions"

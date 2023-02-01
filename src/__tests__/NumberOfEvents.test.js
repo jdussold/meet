@@ -27,7 +27,7 @@ describe("<NumberOfEvents /> component", () => {
     });
     expect(NumberOfEventsWrapper.state("numOfEvents")).toBe(10);
   });
-  test("renders error text when input is less than 1 or greater than 32", () => {
+  test("render error text when input is less than 1 or greater than 32", () => {
     NumberOfEventsWrapper.find("input.numOfEvents").simulate("change", {
       target: { value: -1 },
     });
