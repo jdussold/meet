@@ -29,7 +29,7 @@ class NumberOfEvents extends Component {
     const { numOfEvents } = this.state;
 
     return (
-      <div>
+      <div className="numOfEvents">
         <label>
           Number of events
           <input

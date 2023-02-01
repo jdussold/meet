@@ -9,7 +9,7 @@ describe("<Event /> component", () => {
     event = mockData[0];
     EventWrapper = shallow(<Event event={event} />);
   });
-  test("render event", () => {
+  test("renders event", () => {
     expect(EventWrapper).toBeDefined();
   });
   test("render event summary as h1", () => {
