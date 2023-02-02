@@ -9,7 +9,7 @@ describe("<NumberOfEvents /> component", () => {
       <NumberOfEvents updateNumberOfEvents={() => {}} />
     );
   });
-  test("renders number of events component", () => {
+  test("render number of events component", () => {
     expect(NumberOfEventsWrapper).toBeDefined();
   });
   test("render default value of 32", () => {
@@ -18,7 +18,7 @@ describe("<NumberOfEvents /> component", () => {
     );
     expect(NumberOfEventsWrapper.state("numOfEvents")).toBe(32);
   });
-  test("renders text input correctly", () => {
+  test("render text input correctly", () => {
     expect(NumberOfEventsWrapper.find("input.numOfEvents").prop("value")).toBe(
       32
     );

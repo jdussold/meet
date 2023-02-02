@@ -9,10 +9,10 @@ describe("<Event /> component", () => {
     event = mockData[0];
     EventWrapper = shallow(<Event event={event} />);
   });
-  test("renders event", () => {
+  test("render event", () => {
     expect(EventWrapper).toBeDefined();
   });
-  test("renders event summary as h1", () => {
+  test("render event summary as h1", () => {
     const summary = EventWrapper.find("h1.summary");
     expect(summary).toHaveLength(1);
     expect(summary.text()).toBe(event.summary);
