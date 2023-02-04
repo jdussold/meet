@@ -1,7 +1,3 @@
-import { mockData } from "./mock-data";
-import axios from "axios";
-import NProgress from "nprogress";
-
 /**
  *
  * @param {*} events:
@@ -9,6 +5,11 @@ import NProgress from "nprogress";
  * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
  * The Set will remove all duplicates from the array.
  */
+
+import { mockData } from "./mock-data";
+import axios from "axios";
+import NProgress from "nprogress";
+
 export const extractLocations = (events) => {
   var extractLocations = events.map((event) => event.location);
   var locations = [...new Set(extractLocations)];

@@ -22,7 +22,7 @@ class Event extends Component {
           {this.state.collapsed ? "show details" : "hide details"}
         </button>
         {!this.state.collapsed && (
-          <div>
+          <div className="event-details">
             <h2 className="about">About event:</h2>
             <a className="link" href={event.htmlLink}>
               See details on Google Calendar
