@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { InputGroup, FormControl, ListGroup, Alert } from "react-bootstrap";
 
 class CitySearch extends Component {
   state = {
@@ -9,59 +10,80 @@ class CitySearch extends Component {
 
   handleInputChanged = (event) => {
     const value = event.target.value;
+    this.setState({ showSuggestions: true });
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
-    this.setState({
-      query: value,
-      suggestions,
-    });
+    if (suggestions.length === 0) {
+      this.setState({
+        query: value,
+        infoText:
+          "We can not find the city you are looking for. Please try another city",
+      });
+    } else {
+      return this.setState({
+        query: value,
+        suggestions,
+        infoText: "",
+      });
+    }
   };
+
   handleItemClicked = (suggestion) => {
     this.setState({
       query: suggestion,
+      suggestions: [],
       showSuggestions: false,
+      infoText: "",
     });
-
     this.props.updateEvents(suggestion);
   };
 
   handleInputBlur = () => {
     setTimeout(() => {
       this.setState({ showSuggestions: false });
-    }, 300);
+    }, 100);
   };
 
   render() {
     return (
       <div className="CitySearch">
-        <input
-          type="text"
-          className="city"
-          value={this.state.query}
-          onChange={this.handleInputChanged}
-          placeholder="Search for location..."
-          onFocus={() => {
-            this.setState({ showSuggestions: true });
-          }}
-          onBlur={this.handleInputBlur}
-        />
-        <ul
+        {this.state.infoText && (
+          <Alert variant="info">{this.state.infoText}</Alert>
+        )}
+        <label className="citySearch-label">
+          City
+          <InputGroup>
+            <FormControl
+              type="text"
+              className="city custom-input"
+              value={this.state.query}
+              onChange={this.handleInputChanged}
+              placeholder="Search for location..."
+              onFocus={() => {
+                this.setState({ showSuggestions: true });
+              }}
+              onBlur={this.handleInputBlur}
+            />
+          </InputGroup>
+        </label>
+        <ListGroup
           className="suggestions"
           style={this.state.showSuggestions ? {} : { display: "none" }}
         >
           {this.state.suggestions.map((suggestion) => (
-            <li
+            <ListGroup.Item
               key={suggestion}
               onClick={() => this.handleItemClicked(suggestion)}
+              action
             >
               {suggestion}
-            </li>
+            </ListGroup.Item>
           ))}
-          <li onClick={() => this.handleItemClicked("all")}>
+          <ListGroup.Item onClick={() => this.handleItemClicked("all")} action>
             <b>See all cities</b>
-          </li>
-        </ul>
+          </ListGroup.Item>
+        </ListGroup>
       </div>
     );
   }

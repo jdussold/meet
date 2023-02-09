@@ -5,6 +5,7 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents, extractLocations } from "./api";
 import "./nprogress.css";
+import { Container } from "react-bootstrap";
 
 class App extends Component {
   state = {
@@ -44,7 +45,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <Container className="my-6" style={{ margin: "auto", width: "50%" }}>
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
@@ -57,7 +58,7 @@ class App extends Component {
           events={this.state.events}
           numberOfEvents={this.state.numberOfEvents}
         />
-      </div>
+      </Container>
     );
   }
 }

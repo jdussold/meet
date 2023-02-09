@@ -1,23 +1,29 @@
 import React, { Component } from "react";
+import { ErrorAlert } from "./Alert";
+import { FormControl, InputGroup } from "react-bootstrap";
 
 class NumberOfEvents extends Component {
   state = {
     numOfEvents: 32,
     errorText: "",
+    isErrorVisible: false,
   };
 
   changeNum = (value) => {
+    let errorText = "";
+    let isErrorVisible = false;
+
     if (value < 1 || value > 32) {
-      this.setState({
-        errorText: "Select number from 1 to 32",
-        numOfEvents: value,
-      });
-    } else {
-      this.setState({
-        errorText: "",
-        numOfEvents: value,
-      });
+      errorText = "Select number from 1 to 32";
+      isErrorVisible = true;
     }
+
+    this.setState({
+      errorText,
+      numOfEvents: value,
+      isErrorVisible,
+    });
+
     this.props.updateNumberOfEvents(undefined, value);
   };
 
@@ -26,18 +32,21 @@ class NumberOfEvents extends Component {
   }
 
   render() {
-    const { numOfEvents } = this.state;
+    const { numOfEvents, errorText, isErrorVisible } = this.state;
 
     return (
       <div className="numOfEvents">
-        <label>
+        {isErrorVisible && <ErrorAlert text={errorText} />}
+        <label className="numOfEvents-label">
           Number of events
-          <input
-            className="numOfEvents"
-            type="number"
-            value={numOfEvents}
-            onChange={(event) => this.changeNum(event.target.value)}
-          ></input>
+          <InputGroup>
+            <FormControl
+              className="numOfEvents custom-input"
+              type="number"
+              value={numOfEvents}
+              onChange={(event) => this.changeNum(event.target.value)}
+            />
+          </InputGroup>
         </label>
       </div>
     );
