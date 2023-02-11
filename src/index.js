@@ -1,12 +1,12 @@
 import React from "react";
 //import ReactDOM from "react-dom/client";
 import { render } from "react-dom";
-import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import * as atatus from "atatus-spa";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
 atatus.config("2221ec882cd74948b247fe5ac02a3b9e").install();
 
