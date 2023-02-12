@@ -45,7 +45,7 @@ class App extends Component {
 
   render() {
     return (
-      <Container className="my-6" style={{ margin: "auto", width: "50%" }}>
+      <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
