@@ -5,7 +5,7 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents, extractLocations } from "./api";
 import "./nprogress.css";
-import { Container } from "react-bootstrap";
+import { Container, Alert } from "react-bootstrap";
 
 class App extends Component {
   state = {
@@ -46,6 +46,11 @@ class App extends Component {
   render() {
     return (
       <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
+        {!navigator.onLine && (
+          <Alert variant="info">
+            You are currently viewing cached data because the app is offline.
+          </Alert>
+        )}
         <CitySearch
           locations={this.state.locations}
           updateEvents={this.updateEvents}
