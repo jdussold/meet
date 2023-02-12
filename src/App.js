@@ -62,18 +62,22 @@ class App extends Component {
             You are currently viewing cached data because the app is offline.
           </Alert>
         )}
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents
-          numOfEvents={this.state.numberOfEvents}
-          updateNumberOfEvents={this.updateNumberOfEvents}
-        />
-        <EventList
-          events={this.state.events}
-          numberOfEvents={this.state.numberOfEvents}
-        />
+        {this.state.showWelcomeScreen === false && (
+          <>
+            <CitySearch
+              locations={this.state.locations}
+              updateEvents={this.updateEvents}
+            />
+            <NumberOfEvents
+              numOfEvents={this.state.numberOfEvents}
+              updateNumberOfEvents={this.updateNumberOfEvents}
+            />
+            <EventList
+              events={this.state.events}
+              numberOfEvents={this.state.numberOfEvents}
+            />
+          </>
+        )}
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
