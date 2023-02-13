@@ -40,20 +40,11 @@ class App extends Component {
     const code = searchParams.get("code");
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
     if ((code || isTokenValid) && this.mounted) {
-      if (navigator.onLine) {
-        getEvents().then((events) => {
-          if (this.mounted) {
-            this.setState({ events, locations: extractLocations(events) });
-            localStorage.setItem("events", JSON.stringify(events));
-          }
-        });
-      } else {
-        const cachedEvents = localStorage.getItem("events");
-        if (cachedEvents) {
-          const events = JSON.parse(cachedEvents);
+      getEvents().then((events) => {
+        if (this.mounted) {
           this.setState({ events, locations: extractLocations(events) });
         }
-      }
+      });
     }
   }
 
