@@ -14,11 +14,11 @@ function WelcomeScreen(props) {
             props.getAccessToken();
           }}
           rel="nofollow noopener"
-          class="login-button"
+          className="login-button"
         >
-          <div class="google-icon-wrapper">
+          <div className="google-icon-wrapper">
             <img
-              class="google-icon"
+              className="google-icon"
               src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Log
 o.svg"
               alt="Google sign-in"
