@@ -53,8 +53,10 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.showWelcomeScreen === undefined)
+    if (this.state.showWelcomeScreen === undefined) {
       return <div className="App" />;
+    }
+
     return (
       <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
         {!navigator.onLine && (
