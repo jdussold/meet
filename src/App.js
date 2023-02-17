@@ -13,7 +13,7 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    showWelcomeScreen: undefined,
+    showWelcomeScreen: false,
   };
 
   updateEvents = (location) => {
@@ -49,6 +49,7 @@ class App extends Component {
           this.setState({
             events,
             locations: extractLocations(events),
+            showWelcomeScreen: false,
           });
         }
       });
