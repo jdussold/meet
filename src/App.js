@@ -4,7 +4,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
-import { getEvents, extractLocations, getAccessToken } from "./api";
+import { getEvents, extractLocations, getAccessToken, checkToken } from "./api";
 import "./nprogress.css";
 import { Container, Alert } from "react-bootstrap";
 
@@ -31,13 +31,30 @@ class App extends Component {
     this.setState({ numberOfEvents: value });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
+    const accessToken = localStorage.getItem("access_token");
+    let isTokenValid = false;
+    let code = null;
+
+    // Check if the app is online before attempting to check the token or URL code
+    if (navigator.onLine) {
+      isTokenValid = (await checkToken(accessToken))?.error ? false : true;
+      const searchParams = new URLSearchParams(window.location.search);
+      code = searchParams.get("code");
+    }
+
+    const showWelcomeScreen =
+      !accessToken && navigator.onLine && !isTokenValid && !code;
+    this.setState({ showWelcomeScreen });
+
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
+      });
+    }
   }
 
   componentWillUnmount() {

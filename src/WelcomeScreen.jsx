@@ -2,10 +2,6 @@ import React from "react";
 import "./App.css";
 
 function WelcomeScreen(props) {
-  const handleClick = () => {
-    props.getAccessToken();
-  };
-
   return props.showWelcomeScreen ? (
     <div className="welcome-screen">
       <h1>Welcome to the Meet app</h1>
@@ -14,7 +10,9 @@ function WelcomeScreen(props) {
       </h4>
       <div className="button_cont" align="center">
         <button
-          onClick={handleClick}
+          onClick={() => {
+            props.getAccessToken();
+          }}
           rel="nofollow noopener"
           className="login-button"
         >
