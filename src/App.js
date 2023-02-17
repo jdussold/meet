@@ -13,6 +13,7 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 32,
+    showWelcomeScreen: undefined,
   };
 
   updateEvents = (location) => {
@@ -42,7 +43,7 @@ class App extends Component {
       isTokenValid = (await checkToken(accessToken))?.error ? false : true;
       const searchParams = new URLSearchParams(window.location.search);
       code = searchParams.get("code");
-      const showWelcomeScreen = !accessToken && !isTokenValid && !code;
+      const showWelcomeScreen = !(code || isTokenValid);
       this.setState({ showWelcomeScreen });
     } else {
       // If the app is offline, show the cached events
