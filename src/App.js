@@ -44,11 +44,6 @@ class App extends Component {
       code = searchParams.get("code");
       const showWelcomeScreen = !accessToken && !isTokenValid && !code;
       this.setState({ showWelcomeScreen });
-
-      // Set showWelcomeScreen to false if user has successfully logged in
-      if (accessToken && isTokenValid && this.mounted) {
-        this.setState({ showWelcomeScreen: false });
-      }
     } else {
       // If the app is offline, show the cached events
       const events = JSON.parse(localStorage.getItem("lastEvents")).events;
@@ -72,6 +67,8 @@ class App extends Component {
   render() {
     const accessToken = localStorage.getItem("access_token");
     const showWelcomeScreen = !accessToken && navigator.onLine;
+    const { events } = this.state;
+
     return (
       <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
         {!navigator.onLine && (
@@ -79,22 +76,28 @@ class App extends Component {
             You are currently viewing cached data because the app is offline.
           </Alert>
         )}
-        <CitySearch
-          locations={this.state.locations}
-          updateEvents={this.updateEvents}
-        />
-        <NumberOfEvents
-          numOfEvents={this.state.numberOfEvents}
-          updateNumberOfEvents={this.updateNumberOfEvents}
-        />
-        <EventList
-          events={this.state.events}
-          numberOfEvents={this.state.numberOfEvents}
-        />
-        <WelcomeScreen
-          showWelcomeScreen={showWelcomeScreen}
-          getAccessToken={getAccessToken}
-        />
+        {events.length > 0 && (
+          <>
+            <CitySearch
+              locations={this.state.locations}
+              updateEvents={this.updateEvents}
+            />
+            <NumberOfEvents
+              numOfEvents={this.state.numberOfEvents}
+              updateNumberOfEvents={this.updateNumberOfEvents}
+            />
+            <EventList
+              events={events}
+              numberOfEvents={this.state.numberOfEvents}
+            />
+          </>
+        )}
+        {showWelcomeScreen && !events.length && (
+          <WelcomeScreen
+            showWelcomeScreen={showWelcomeScreen}
+            getAccessToken={getAccessToken}
+          />
+        )}
       </Container>
     );
   }
