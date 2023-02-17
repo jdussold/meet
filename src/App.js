@@ -13,7 +13,6 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    showWelcomeScreen: undefined,
   };
 
   updateEvents = (location) => {
@@ -43,8 +42,13 @@ class App extends Component {
       isTokenValid = (await checkToken(accessToken))?.error ? false : true;
       const searchParams = new URLSearchParams(window.location.search);
       code = searchParams.get("code");
-      const showWelcomeScreen = !(code || isTokenValid);
+      const showWelcomeScreen = !accessToken && !isTokenValid && !code;
       this.setState({ showWelcomeScreen });
+
+      // Set showWelcomeScreen to false if user has successfully logged in
+      if (accessToken && isTokenValid && this.mounted) {
+        this.setState({ showWelcomeScreen: false });
+      }
     } else {
       // If the app is offline, show the cached events
       const events = JSON.parse(localStorage.getItem("lastEvents")).events;
@@ -55,11 +59,7 @@ class App extends Component {
     if (navigator.onLine && (code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({
-            events,
-            locations: extractLocations(events),
-            showWelcomeScreen: false,
-          });
+          this.setState({ events, locations: extractLocations(events) });
         }
       });
     }
