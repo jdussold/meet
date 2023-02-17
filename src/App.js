@@ -3,7 +3,8 @@ import "./App.css";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
-import { getEvents, extractLocations } from "./api";
+import WelcomeScreen from "./WelcomeScreen";
+import { getEvents, extractLocations, getAccessToken } from "./api";
 import "./nprogress.css";
 import { Container, Alert } from "react-bootstrap";
 
@@ -44,6 +45,8 @@ class App extends Component {
   }
 
   render() {
+    const accessToken = localStorage.getItem("access_token");
+    const showWelcomeScreen = !accessToken && navigator.onLine;
     return (
       <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
         {!navigator.onLine && (
@@ -62,6 +65,10 @@ class App extends Component {
         <EventList
           events={this.state.events}
           numberOfEvents={this.state.numberOfEvents}
+        />
+        <WelcomeScreen
+          showWelcomeScreen={showWelcomeScreen}
+          getAccessToken={getAccessToken}
         />
       </Container>
     );
