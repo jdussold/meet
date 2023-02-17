@@ -5,7 +5,6 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
 import { getEvents, extractLocations, getAccessToken, checkToken } from "./api";
-import { NProgress } from "nprogress";
 import "./nprogress.css";
 import { Container, Alert } from "react-bootstrap";
 
@@ -45,9 +44,6 @@ class App extends Component {
       code = searchParams.get("code");
       const showWelcomeScreen = !accessToken && !isTokenValid && !code;
       this.setState({ showWelcomeScreen });
-
-      // Show the spinner while the events are being fetched
-      NProgress.start();
     } else {
       // If the app is offline, show the cached events
       const events = JSON.parse(localStorage.getItem("lastEvents")).events;
@@ -59,7 +55,6 @@ class App extends Component {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({ events, locations: extractLocations(events) });
-          NProgress.done(); // Hide the spinner when the events are loaded
         }
       });
     }
