@@ -42,13 +42,16 @@ class App extends Component {
       isTokenValid = (await checkToken(accessToken))?.error ? false : true;
       const searchParams = new URLSearchParams(window.location.search);
       code = searchParams.get("code");
+      const showWelcomeScreen = !accessToken && !isTokenValid && !code;
+      this.setState({ showWelcomeScreen });
+    } else {
+      // If the app is offline, show the cached events
+      const events = JSON.parse(localStorage.getItem("lastEvents")).events;
+      this.setState({ events, locations: extractLocations(events) });
     }
 
-    const showWelcomeScreen =
-      !accessToken && navigator.onLine && !isTokenValid && !code;
-    this.setState({ showWelcomeScreen });
-
-    if ((code || isTokenValid) && this.mounted) {
+    // Call the getEvents function only if the app is online
+    if (navigator.onLine && (code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({ events, locations: extractLocations(events) });
