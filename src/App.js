@@ -5,6 +5,14 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
 import { getEvents, extractLocations, getAccessToken, checkToken } from "./api";
+import {
+  ScatterChart,
+  Scatter,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+} from "recharts";
 import "./nprogress.css";
 import { Container, Alert } from "react-bootstrap";
 
@@ -25,6 +33,18 @@ class App extends Component {
         events: locationEvents,
       });
     });
+  };
+
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter(
+        (event) => event.location === location
+      ).length;
+      const city = location.split(", ").shift();
+      return { city, number };
+    });
+    return data;
   };
 
   updateNumberOfEvents = (event, value) => {
@@ -86,6 +106,22 @@ class App extends Component {
               numOfEvents={this.state.numberOfEvents}
               updateNumberOfEvents={this.updateNumberOfEvents}
             />
+            <ScatterChart
+              width={400}
+              height={400}
+              margin={{
+                top: 20,
+                right: 20,
+                bottom: 20,
+                left: 20,
+              }}
+            >
+              <CartesianGrid />
+              <XAxis type="category" dataKey="city" name="city" />
+              <YAxis type="number" dataKey="number" name="number of events" />
+              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+              <Scatter data={this.getData()} fill="#8884d8" />
+            </ScatterChart>
             <EventList
               events={events}
               numberOfEvents={this.state.numberOfEvents}
