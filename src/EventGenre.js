@@ -7,10 +7,11 @@ const EventGenre = ({ events }) => {
 
   useEffect(() => {
     const getData = () => {
-      const genres = ["React", "JavaScript", "Node", "jQuery", "AngularJS"];
+      const genres = ["React", "JavaScript", "Node", "jQuery", "Angular"];
       const data = genres.map((genre) => {
+        const regex = new RegExp(`\\b${genre}\\b`, "i");
         const value = events.filter((event) =>
-          event.summary.split(" ").includes(genre)
+          regex.test(event.summary.replace(/[^\w\s]/gi, ""))
         ).length;
         return { name: genre, value };
       });
