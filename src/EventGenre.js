@@ -14,6 +14,7 @@ const EventGenre = ({ events }) => {
         ).length;
         return { name: genre, value };
       });
+      console.log("Data:", data);
       return data;
     };
     setData(() => getData());
