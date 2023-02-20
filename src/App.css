@@ -195,6 +195,7 @@ p {
   flex-direction: column;
   background-color: #1b1e27;
   border-radius: 4px;
+  margin-bottom: 40px;
 }
 .data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;

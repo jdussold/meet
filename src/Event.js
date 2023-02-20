@@ -16,7 +16,10 @@ class Event extends Component {
       <Container className="event">
         <Row>
           <Col xs={12} md={12}>
-            <Card className="event-card" style={{ border: "none" }}>
+            <Card
+              className="event-card"
+              style={{ border: "none", width: "100%" }}
+            >
               <Card.Header>{event.summary}</Card.Header>
               <Card.Body>
                 <Card.Text>
