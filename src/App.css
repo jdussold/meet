@@ -205,12 +205,18 @@ h1 {
 .card-body {
   background-color: #1b1e27;
   color: #f2f4f6 !important;
+  max-height: $ {
+    this.state.collapsed? '3.5rem' : "auto";
+  }
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
 }
 
 .event-card {
-  border: 2px solid #1b1e27 !important;
+  border: 2px solid #1a1d26 !important;
   border-radius: 4px !important;
   transition: all 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .event-card:hover {
