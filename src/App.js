@@ -109,12 +109,12 @@ class App extends Component {
               updateNumberOfEvents={this.updateNumberOfEvents}
             />
             <div className="data-vis-wrapper" d-flex justify-content-center>
-              <Card>
+              <Card style={{ width: "400px" }} className="mx-2">
                 <Card.Body>
                   <EventGenre events={events} />
                 </Card.Body>
               </Card>
-              <Card className="my-4">
+              <Card style={{ width: "400px" }} className="mx-2">
                 <Card.Body>
                   <ResponsiveContainer height={400}>
                     <ScatterChart
