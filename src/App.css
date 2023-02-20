@@ -59,8 +59,6 @@ h1 {
   border: 2px solid #1a1d26 !important;
   border-radius: 4px !important;
   transition: all 0.3s ease-in-out;
-  max-width: 600px;
-  width: auto;
 }
 
 .event-card:hover {
@@ -301,7 +299,7 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .event {
+  .event-card {
     width: calc(50% - 10px);
     margin-bottom: 20px;
   }
@@ -311,7 +309,7 @@ h1 {
   .EventList {
     display: block;
   }
-  .event {
+  .event-card {
     width: 100%;
     margin-bottom: 20px;
   }
