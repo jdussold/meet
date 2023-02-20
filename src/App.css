@@ -29,13 +29,13 @@ p {
 }
 
 .card-header {
-  background-color: #1b1e27 !important;
-  border-bottom: 2px solid #0bbe35 !important;
+  background-color: #1b1e27;
+  border-top: 2px solid #1b1e27;
+  border-left: 2px solid #1b1e27;
+  border-right: 2px solid #1b1e27;
+  border-bottom: 2px solid #0bbe35;
   font-weight: 700;
-  color: #f2f4f6 !important;
-  border-top: none;
-  border-left: none;
-  border-right: none;
+  color: #f2f4f6;
 }
 
 .card-body {
@@ -83,7 +83,7 @@ p {
 }
 
 .custom-input {
-  border: 1px solid #494949 !important;
+  border: 1px solid #f2f4f6 !important;
 }
 
 .CitySearch {
