@@ -11,6 +11,7 @@
 
 .container {
   background-color: #14181e;
+  padding-top: 50px;
 }
 
 ul {
@@ -25,7 +26,6 @@ p {
 h1 {
   text-align: center;
   color: #f2f4f6;
-  margin-top: 50px;
 }
 
 .EventList {
