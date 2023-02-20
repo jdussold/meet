@@ -37,14 +37,12 @@ p {
 .event-card {
   border: 2px solid #1a1d26 !important;
   border-radius: 4px !important;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease-in-out;
 }
 
 .event-card:hover {
   border: 2px solid #0bbe35 !important;
   border-radius: 4px !important;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
 }
 
@@ -72,7 +70,7 @@ p {
 
 .custom-input:focus {
   border-color: #0bbe35 !important;
-  box-shadow: 0 0 0 0.2rem #82bfab !important;
+  box-shadow: 0 0 0 0.2rem #0bbe35 !important;
 }
 
 .custom-input {
@@ -87,15 +85,6 @@ p {
   margin: auto;
   position: relative;
   text-align: center;
-}
-
-.event {
-  padding: 10px;
-  margin-bottom: 10px;
-  text-align: left;
-  border-radius: 4px;
-  background-color: #1b1e27;
-  position: relative;
 }
 
 .name {
