@@ -26,26 +26,35 @@ p {
   background-color: #1b1e27 !important;
   border-bottom: 2px solid #0bbe35 !important;
   font-weight: 700;
+  color: #f2f4f6;
 }
 
 .card-body {
   background-color: #1b1e27;
+  color: #f2f4f6 !important;
 }
 
 .event-card {
   border: 2px solid #1a1d26 !important;
+  border-radius: 4px !important;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease-in-out;
 }
 
 .event-card:hover {
   border: 2px solid #0bbe35 !important;
+  border-radius: 4px !important;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
 }
 
 .event-btn {
   float: right;
+  background-color: #0bbe35 !important;
+}
+
+.event-btn:hover {
+  background-color: #178f33 !important;
 }
 
 .alert-info {
@@ -114,13 +123,13 @@ p {
 }
 
 .citySearch-label {
-  color: whitesmoke;
+  color: #f2f4f6;
   font-weight: 700;
   margin-top: 10px;
 }
 
 .numOfEvents-label {
-  color: whitesmoke;
+  color: #f2f4f6;
   font-weight: 700;
 }
 
@@ -200,18 +209,18 @@ p {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #fff;
+  color: #f2f4f6;
 }
 
 .welcome-screen a {
-  color: #fff;
+  color: #f2f4f6;
 }
 
 .login-button {
-  color: #ffffff;
+  color: #f2f4f6;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: #198754;
+  background-color: #0bbe35;
   padding: 10px 20px;
   border-radius: 4px;
   border: none;
@@ -222,12 +231,12 @@ p {
 }
 
 .login-button:hover {
-  background-color: #13684a;
+  background-color: #178f33;
   cursor: pointer;
 }
 
 .google-icon {
-  background-color: #fff;
+  background-color: #f2f4f6;
   border-radius: 4px;
   padding: 5px;
 }
