@@ -77,9 +77,6 @@ class App extends Component {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({ events, locations: extractLocations(events) });
-          if (isTokenValid || accessToken) {
-            this.setState({ showWelcomeScreen: false });
-          }
         }
       });
     }
