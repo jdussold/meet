@@ -211,9 +211,6 @@ h1 {
   border: 2px solid #1b1e27 !important;
   border-radius: 4px !important;
   transition: all 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  height: auto;
 }
 
 .event-card:hover {
@@ -301,7 +298,8 @@ h1 {
     justify-content: space-between;
   }
   .event-card {
-    width: calc(50% - 10px);
+    width: 100%;
+    height: auto;
     margin-bottom: 20px;
   }
 }
