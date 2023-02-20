@@ -22,11 +22,20 @@ p {
   margin: 5px 0;
 }
 
+.event {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+}
+
 .card-header {
   background-color: #1b1e27 !important;
   border-bottom: 2px solid #0bbe35 !important;
   font-weight: 700;
   color: #f2f4f6 !important;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 .card-body {
