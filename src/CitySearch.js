@@ -40,7 +40,9 @@ class CitySearch extends Component {
   };
 
   handleInputBlur = () => {
-    this.setState({ showSuggestions: false });
+    setTimeout(() => {
+      this.setState({ showSuggestions: false });
+    }, 300);
   };
 
   render() {
