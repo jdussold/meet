@@ -1,3 +1,6 @@
+import React, { useEffect, useState } from "react";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
+
 const EventGenre = ({ events }) => {
   const [data, setData] = useState([]);
   const colors = ["#61DAFB", "#EC008C", "#5DAE48", "#0A69AD", "#DD0031"];
@@ -17,7 +20,7 @@ const EventGenre = ({ events }) => {
         ).length;
         return { name: genre.label, value };
       });
-      // console.log("Data:", data);
+      console.log("Data:", data);
       return data;
     };
     setData(() => getData());
