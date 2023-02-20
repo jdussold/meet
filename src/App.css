@@ -208,11 +208,9 @@ h1 {
 }
 
 .event-card {
-  border: 2px solid #1a1d26 !important;
+  border: 2px solid #1b1e27 !important;
   border-radius: 4px !important;
-  transition: height 0.3s ease-in-out;
-  height: auto;
-  overflow: hidden;
+  transition: all 0.3s ease-in-out;
 }
 
 .event-card:hover {
@@ -300,7 +298,6 @@ h1 {
     justify-content: space-between;
   }
   .event-card {
-    width: 100%;
     height: auto;
     margin-bottom: 20px;
   }
