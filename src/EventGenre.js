@@ -1,6 +1,3 @@
-import React, { useEffect, useState } from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer, Legend } from "recharts";
-
 const EventGenre = ({ events }) => {
   const [data, setData] = useState([]);
   const colors = ["#61DAFB", "#EC008C", "#5DAE48", "#0A69AD", "#DD0031"];
@@ -8,20 +5,19 @@ const EventGenre = ({ events }) => {
   useEffect(() => {
     const getData = () => {
       const genres = [
-        "React",
-        "JavaScript",
-        "Node(.js)?",
-        "jQuery",
-        "Angular(JS)?(-Remote)?",
+        { label: "React", regex: /React/i },
+        { label: "JavaScript", regex: /JavaScript/i },
+        { label: "Node", regex: /Node(\.js)?/i },
+        { label: "jQuery", regex: /jQuery/i },
+        { label: "Angular", regex: /Angular(JS)?(-Remote)?/i },
       ];
       const data = genres.map((genre) => {
-        const regex = new RegExp(genre, "i");
         const value = events.filter((event) =>
-          regex.test(event.summary)
+          genre.regex.test(event.summary)
         ).length;
-        return { name: genre, value };
+        return { name: genre.label, value };
       });
-      console.log("Data:", data);
+      // console.log("Data:", data);
       return data;
     };
     setData(() => getData());
