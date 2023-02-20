@@ -296,7 +296,7 @@ h1 {
 }
 
 @media only screen and (min-width: 1400px) {
-  .EventList-container {
+  .EventList {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -308,7 +308,7 @@ h1 {
 }
 
 @media only screen and (max-width: 1399px) {
-  .EventList-container {
+  .EventList {
     display: block;
   }
   .event {
