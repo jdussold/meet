@@ -294,3 +294,25 @@ h1 {
     margin: 0 auto;
   }
 }
+
+@media only screen and (min-width: 1400px) {
+  .EventList-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .event {
+    width: calc(50% - 10px);
+    margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 1399px) {
+  .EventList-container {
+    display: block;
+  }
+  .event {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
