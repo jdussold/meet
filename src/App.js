@@ -77,6 +77,9 @@ class App extends Component {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({ events, locations: extractLocations(events) });
+          if (isTokenValid || accessToken) {
+            this.setState({ showWelcomeScreen: false });
+          }
         }
       });
     }
@@ -92,69 +95,67 @@ class App extends Component {
     const { events } = this.state;
 
     return (
-      <div>
-        <h1>Coding Meetups</h1>
-        <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
-          {!navigator.onLine && (
-            <Alert variant="info">
-              You are currently viewing cached data because the app is offline.
-            </Alert>
-          )}
-          {events.length > 0 && (
-            <>
-              <CitySearch
-                locations={this.state.locations}
-                updateEvents={this.updateEvents}
-              />
-              <NumberOfEvents
-                numOfEvents={this.state.numberOfEvents}
-                updateNumberOfEvents={this.updateNumberOfEvents}
-              />
-              <div className="data-vis-wrapper">
-                <EventGenre events={events} />
-                <ResponsiveContainer height={400}>
-                  <ScatterChart
-                    margin={{
-                      top: 20,
-                      right: 20,
-                      bottom: 20,
-                      left: 20,
-                    }}
-                  >
-                    <CartesianGrid />
-                    <XAxis
-                      type="category"
-                      dataKey="city"
-                      name="city"
-                      tick={{ fill: "#f2f4f6" }}
-                    />
-                    <YAxis
-                      type="number"
-                      dataKey="number"
-                      name="number of events"
-                      tick={{ fill: "#f2f4f6" }}
-                    />
-                    <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-                    <Scatter data={this.getData()} fill="#F2BB05" />
-                  </ScatterChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="EventList-container">
-                <EventList
-                  events={events}
-                  numberOfEvents={this.state.numberOfEvents}
-                />
-              </div>
-            </>
-          )}
-          {showWelcomeScreen && !events.length && (
-            <WelcomeScreen
-              showWelcomeScreen={showWelcomeScreen}
-              getAccessToken={getAccessToken}
+      <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
+        {!navigator.onLine && (
+          <Alert variant="info">
+            You are currently viewing cached data because the app is offline.
+          </Alert>
+        )}
+        {events.length > 0 && (
+          <>
+            <h1>Coding Meetups</h1>
+            <CitySearch
+              locations={this.state.locations}
+              updateEvents={this.updateEvents}
             />
-          )}
-        </Container>
-      </div>
+            <NumberOfEvents
+              numOfEvents={this.state.numberOfEvents}
+              updateNumberOfEvents={this.updateNumberOfEvents}
+            />
+            <div className="data-vis-wrapper">
+              <EventGenre events={events} />
+              <ResponsiveContainer height={400}>
+                <ScatterChart
+                  margin={{
+                    top: 20,
+                    right: 20,
+                    bottom: 20,
+                    left: 20,
+                  }}
+                >
+                  <CartesianGrid />
+                  <XAxis
+                    type="category"
+                    dataKey="city"
+                    name="city"
+                    tick={{ fill: "#f2f4f6" }}
+                  />
+                  <YAxis
+                    type="number"
+                    dataKey="number"
+                    name="number of events"
+                    tick={{ fill: "#f2f4f6" }}
+                  />
+                  <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+                  <Scatter data={this.getData()} fill="#F2BB05" />
+                </ScatterChart>
+              </ResponsiveContainer>
+            </div>
+            <div className="EventList-container">
+              <EventList
+                events={events}
+                numberOfEvents={this.state.numberOfEvents}
+              />
+            </div>
+          </>
+        )}
+        {showWelcomeScreen && !events.length && (
+          <WelcomeScreen
+            showWelcomeScreen={showWelcomeScreen}
+            getAccessToken={getAccessToken}
+          />
+        )}
+      </Container>
     );
   }
 }
