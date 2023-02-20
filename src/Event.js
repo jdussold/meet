@@ -1,9 +1,13 @@
+// Importing the necessary modules from react-bootstrap and React itself
 import React, { Component } from "react";
 import { Card, Button, Container, Row, Col } from "react-bootstrap";
 
+// Define the Event component as a class component
 class Event extends Component {
+  // Declaring the initial state for the component
   state = { collapsed: true };
 
+  // Function that toggles the value of the 'collapsed' state property
   toggleDetails = () => {
     this.setState((prevState) => ({
       collapsed: !prevState.collapsed,
@@ -11,7 +15,10 @@ class Event extends Component {
   };
 
   render() {
+    // Destructuring the 'event' property from the props object
     const { event } = this.props;
+
+    // renders an event card that displays various information depending on whether or not the Show Details button is clicked
     return (
       <Container className="event">
         <Row>
@@ -31,10 +38,11 @@ class Event extends Component {
                 <Button
                   className="event-btn"
                   variant="success"
-                  onClick={this.toggleDetails}
+                  onClick={this.toggleDetails} // When the button is clicked, it calls the toggleDetails function
                 >
                   {this.state.collapsed ? "Show Details" : "Hide Details"}
                 </Button>
+                {/* If the 'collapsed' state property is false, the following is shown */}
                 {!this.state.collapsed && (
                   <div className="event-details">
                     <h2 className="about">About event:</h2>
@@ -52,4 +60,6 @@ class Event extends Component {
     );
   }
 }
+
+// Exporting the Event component
 export default Event;
