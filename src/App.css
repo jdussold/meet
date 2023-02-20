@@ -22,6 +22,12 @@ p {
   margin: 5px 0;
 }
 
+.EventList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .event {
   padding: 10px;
   margin-bottom: 10px;
