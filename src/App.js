@@ -108,7 +108,7 @@ class App extends Component {
               numOfEvents={this.state.numberOfEvents}
               updateNumberOfEvents={this.updateNumberOfEvents}
             />
-            <div className="data-vis-wrapper">
+            <div className="data-vis-wrapper" d-flex justify-content-center>
               <Card>
                 <Card.Body>
                   <EventGenre events={events} />
