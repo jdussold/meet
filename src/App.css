@@ -208,9 +208,11 @@ h1 {
 }
 
 .event-card {
-  border: 2px solid #1b1e27 !important;
+  border: 2px solid #1a1d26 !important;
   border-radius: 4px !important;
-  transition: all 0.3s ease-in-out;
+  transition: height 0.3s ease-in-out;
+  height: auto;
+  overflow: hidden;
 }
 
 .event-card:hover {
