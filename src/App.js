@@ -4,7 +4,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
-import backgroundImage from "./../public/Meet-up-background-image.png";
+import backgroundImage from "./img/Meet-up-background-image.png";
 import { getEvents, extractLocations, getAccessToken, checkToken } from "./api";
 import {
   ScatterChart,
