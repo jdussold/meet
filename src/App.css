@@ -73,7 +73,7 @@ p {
 }
 
 .city {
-  margin-top: 50px;
+  margin-top: 20px;
   width: 300px;
 }
 
@@ -91,7 +91,7 @@ p {
   flex-direction: column;
   flex-basis: 250px;
   max-width: 250px;
-  margin: auto;
+  margin: 50px auto auto auto;
   position: relative;
   text-align: center;
 }
@@ -193,6 +193,8 @@ p {
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: #1b1e27;
+  border-radius: 4px;
 }
 .data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;

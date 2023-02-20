@@ -16,7 +16,7 @@ import {
 } from "recharts";
 import EventGenre from "./EventGenre";
 import "./nprogress.css";
-import { Container, Alert, Card } from "react-bootstrap";
+import { Container, Alert } from "react-bootstrap";
 
 class App extends Component {
   state = {
@@ -108,42 +108,34 @@ class App extends Component {
               numOfEvents={this.state.numberOfEvents}
               updateNumberOfEvents={this.updateNumberOfEvents}
             />
-            <div className="data-vis-wrapper" d-flex justify-content-center>
-              <Card style={{ width: "400px" }} className="mx-2">
-                <Card.Body>
-                  <EventGenre events={events} />
-                </Card.Body>
-              </Card>
-              <Card style={{ width: "400px" }} className="mx-2">
-                <Card.Body>
-                  <ResponsiveContainer height={400}>
-                    <ScatterChart
-                      margin={{
-                        top: 20,
-                        right: 20,
-                        bottom: 20,
-                        left: 20,
-                      }}
-                    >
-                      <CartesianGrid />
-                      <XAxis
-                        type="category"
-                        dataKey="city"
-                        name="city"
-                        tick={{ fill: "#f2f4f6" }}
-                      />
-                      <YAxis
-                        type="number"
-                        dataKey="number"
-                        name="number of events"
-                        tick={{ fill: "#f2f4f6" }}
-                      />
-                      <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-                      <Scatter data={this.getData()} fill="#F2BB05" />
-                    </ScatterChart>
-                  </ResponsiveContainer>
-                </Card.Body>
-              </Card>
+            <div className="data-vis-wrapper">
+              <EventGenre events={events} />
+              <ResponsiveContainer height={400}>
+                <ScatterChart
+                  margin={{
+                    top: 20,
+                    right: 20,
+                    bottom: 20,
+                    left: 20,
+                  }}
+                >
+                  <CartesianGrid />
+                  <XAxis
+                    type="category"
+                    dataKey="city"
+                    name="city"
+                    tick={{ fill: "#f2f4f6" }}
+                  />
+                  <YAxis
+                    type="number"
+                    dataKey="number"
+                    name="number of events"
+                    tick={{ fill: "#f2f4f6" }}
+                  />
+                  <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+                  <Scatter data={this.getData()} fill="#F2BB05" />
+                </ScatterChart>
+              </ResponsiveContainer>
             </div>
             <EventList
               events={events}
