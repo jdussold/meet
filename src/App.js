@@ -137,10 +137,12 @@ class App extends Component {
                 </ScatterChart>
               </ResponsiveContainer>
             </div>
-            <EventList
-              events={events}
-              numberOfEvents={this.state.numberOfEvents}
-            />
+            <div className="EventList-container">
+              <EventList
+                events={events}
+                numberOfEvents={this.state.numberOfEvents}
+              />
+            </div>
           </>
         )}
         {showWelcomeScreen && !events.length && (
