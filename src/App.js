@@ -4,6 +4,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import WelcomeScreen from "./WelcomeScreen";
+import backgroundImage from "./../public/Meet-up-background-image.png";
 import { getEvents, extractLocations, getAccessToken, checkToken } from "./api";
 import {
   ScatterChart,
@@ -102,14 +103,16 @@ class App extends Component {
           )}
           {events.length > 0 && (
             <>
-              <CitySearch
-                locations={this.state.locations}
-                updateEvents={this.updateEvents}
-              />
-              <NumberOfEvents
-                numOfEvents={this.state.numberOfEvents}
-                updateNumberOfEvents={this.updateNumberOfEvents}
-              />
+              <div className="header-wrapper">
+                <CitySearch
+                  locations={this.state.locations}
+                  updateEvents={this.updateEvents}
+                />
+                <NumberOfEvents
+                  numOfEvents={this.state.numberOfEvents}
+                  updateNumberOfEvents={this.updateNumberOfEvents}
+                />
+              </div>
               <div className="data-vis-wrapper">
                 <EventGenre events={events} />
                 <ResponsiveContainer height={400}>
