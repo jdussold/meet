@@ -22,6 +22,11 @@ p {
   margin: 5px 0;
 }
 
+h1 {
+  text-align: center;
+  color: #f2f4f6;
+}
+
 .EventList {
   display: flex;
   flex-wrap: wrap;
@@ -128,13 +133,13 @@ p {
 }
 
 .citySearch-label {
-  color: #f2f4f6;
+  color: #0bbe35;
   font-weight: 700;
   margin-top: 10px;
 }
 
 .numOfEvents-label {
-  color: #f2f4f6;
+  color: #0bbe35;
   font-weight: 700;
 }
 
@@ -202,7 +207,16 @@ p {
   background-color: #1b1e27;
   border-radius: 4px;
   margin-bottom: 40px;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
 }
+
+.data-vis-wrapper:hover {
+  border: 2px solid #0bbe35;
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+}
+
 .data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;
   display: flex;

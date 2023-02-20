@@ -52,7 +52,7 @@ class CitySearch extends Component {
           <Alert variant="info">{this.state.infoText}</Alert>
         )}
         <label className="citySearch-label">
-          City
+          Choose a city
           <InputGroup>
             <FormControl
               type="text"

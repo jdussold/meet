@@ -92,66 +92,69 @@ class App extends Component {
     const { events } = this.state;
 
     return (
-      <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
-        {!navigator.onLine && (
-          <Alert variant="info">
-            You are currently viewing cached data because the app is offline.
-          </Alert>
-        )}
-        {events.length > 0 && (
-          <>
-            <CitySearch
-              locations={this.state.locations}
-              updateEvents={this.updateEvents}
-            />
-            <NumberOfEvents
-              numOfEvents={this.state.numberOfEvents}
-              updateNumberOfEvents={this.updateNumberOfEvents}
-            />
-            <div className="data-vis-wrapper">
-              <EventGenre events={events} />
-              <ResponsiveContainer height={400}>
-                <ScatterChart
-                  margin={{
-                    top: 20,
-                    right: 20,
-                    bottom: 20,
-                    left: 20,
-                  }}
-                >
-                  <CartesianGrid />
-                  <XAxis
-                    type="category"
-                    dataKey="city"
-                    name="city"
-                    tick={{ fill: "#f2f4f6" }}
-                  />
-                  <YAxis
-                    type="number"
-                    dataKey="number"
-                    name="number of events"
-                    tick={{ fill: "#f2f4f6" }}
-                  />
-                  <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-                  <Scatter data={this.getData()} fill="#F2BB05" />
-                </ScatterChart>
-              </ResponsiveContainer>
-            </div>
-            <div className="EventList-container">
-              <EventList
-                events={events}
-                numberOfEvents={this.state.numberOfEvents}
+      <div>
+        <h1>Coding Meetups</h1>
+        <Container className="my-6" style={{ margin: "auto", width: "100%" }}>
+          {!navigator.onLine && (
+            <Alert variant="info">
+              You are currently viewing cached data because the app is offline.
+            </Alert>
+          )}
+          {events.length > 0 && (
+            <>
+              <CitySearch
+                locations={this.state.locations}
+                updateEvents={this.updateEvents}
               />
-            </div>
-          </>
-        )}
-        {showWelcomeScreen && !events.length && (
-          <WelcomeScreen
-            showWelcomeScreen={showWelcomeScreen}
-            getAccessToken={getAccessToken}
-          />
-        )}
-      </Container>
+              <NumberOfEvents
+                numOfEvents={this.state.numberOfEvents}
+                updateNumberOfEvents={this.updateNumberOfEvents}
+              />
+              <div className="data-vis-wrapper">
+                <EventGenre events={events} />
+                <ResponsiveContainer height={400}>
+                  <ScatterChart
+                    margin={{
+                      top: 20,
+                      right: 20,
+                      bottom: 20,
+                      left: 20,
+                    }}
+                  >
+                    <CartesianGrid />
+                    <XAxis
+                      type="category"
+                      dataKey="city"
+                      name="city"
+                      tick={{ fill: "#f2f4f6" }}
+                    />
+                    <YAxis
+                      type="number"
+                      dataKey="number"
+                      name="number of events"
+                      tick={{ fill: "#f2f4f6" }}
+                    />
+                    <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+                    <Scatter data={this.getData()} fill="#F2BB05" />
+                  </ScatterChart>
+                </ResponsiveContainer>
+              </div>
+              <div className="EventList-container">
+                <EventList
+                  events={events}
+                  numberOfEvents={this.state.numberOfEvents}
+                />
+              </div>
+            </>
+          )}
+          {showWelcomeScreen && !events.length && (
+            <WelcomeScreen
+              showWelcomeScreen={showWelcomeScreen}
+              getAccessToken={getAccessToken}
+            />
+          )}
+        </Container>
+      </div>
     );
   }
 }
