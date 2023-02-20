@@ -10,7 +10,7 @@
 }
 
 .container {
-  background-color: #616e7d;
+  background-color: #14181e;
 }
 
 ul {
@@ -23,23 +23,23 @@ p {
 }
 
 .card-header {
-  background-color: #82bfab !important;
-
+  background-color: #1b1e27 !important;
+  border-bottom: 2px solid #0bbe35 !important;
   font-weight: 700;
 }
 
 .card-body {
-  background-color: #aad4c8;
+  background-color: #1b1e27;
 }
 
 .event-card {
-  border: 2px solid #bdbaba !important;
+  border: 2px solid #1a1d26 !important;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease-in-out;
 }
 
 .event-card:hover {
-  border: 2px solid #f3f3f3 !important;
+  border: 2px solid #0bbe35 !important;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease-in-out;
 }
@@ -62,7 +62,7 @@ p {
 }
 
 .custom-input:focus {
-  border-color: #82bfab !important;
+  border-color: #0bbe35 !important;
   box-shadow: 0 0 0 0.2rem #82bfab !important;
 }
 
