@@ -193,7 +193,7 @@ h1 {
 }
 
 .card-header:first-child {
-  border-radius: 0;
+  border-radius: 0 !important;
 }
 
 .card-header {
