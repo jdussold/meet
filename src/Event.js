@@ -24,7 +24,7 @@ class Event extends Component {
         <Row>
           <Col xs={12} md={12}>
             <Card
-              className="event-card"
+              className="event-card rounded-0"
               style={{ border: "none", width: "100%" }}
             >
               <Card.Header>{event.summary}</Card.Header>
