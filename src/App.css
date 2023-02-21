@@ -208,20 +208,23 @@ h1 {
 }
 
 .card-body {
+  margin: 0 !important;
   background-color: #1b1e27;
   color: #f2f4f6 !important;
 }
 
 .event-card {
+  margin: 0 !important;
   border: 2px solid #1b1e27 !important;
   border-radius: 4px !important;
   transition: all 0.3s ease-in-out;
   width: 100%;
-  max-width: 696px;
+  max-width: 400px;
   min-height: 250px;
 }
 
 .event-card:hover {
+  margin: 0;
   border: 2px solid #0bbe35 !important;
   border-radius: 4px !important;
   transition: all 0.3s ease-in-out;
@@ -287,6 +290,11 @@ h1 {
     min-width: auto;
     margin: 0 auto;
   }
+  .event-card {
+    width: 100%;
+    max-width: 696px;
+    margin-bottom: 20px;
+  }
 }
 
 @media only screen and (max-width: 1399px) {
@@ -297,6 +305,7 @@ h1 {
   }
   .event-card {
     width: 100%;
+    max-width: 696px;
     margin-bottom: 20px;
   }
 }
