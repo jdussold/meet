@@ -219,7 +219,7 @@ h1 {
   border-radius: 4px !important;
   transition: all 0.3s ease-in-out;
   width: 100%;
-  max-width: 400px;
+  max-width: 696px;
   min-height: 250px;
 }
 
@@ -290,11 +290,6 @@ h1 {
     min-width: auto;
     margin: 0 auto;
   }
-  .event-card {
-    width: 100%;
-    max-width: 696px;
-    margin-bottom: 20px;
-  }
 }
 
 @media only screen and (max-width: 1399px) {
@@ -303,11 +298,6 @@ h1 {
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  .event-card {
-    width: 100%;
-    max-width: 696px;
-    margin-bottom: 20px;
-  }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -315,9 +305,5 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-  }
-  .event-card {
-    min-height: 250px;
-    margin-bottom: 20px;
   }
 }
