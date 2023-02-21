@@ -192,6 +192,10 @@ h1 {
   border: none;
 }
 
+.card-header:first-child {
+  border-radius: 0;
+}
+
 .card-header {
   background-color: #1b1e27 !important;
   border-top: 2px solid #1b1e27 !important;
