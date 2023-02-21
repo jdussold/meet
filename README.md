@@ -2,6 +2,26 @@
 
 Welcome to Meet App, a serverless progressive web application (PWA) built with React using test-driven development (TDD). This app allows users to filter events by city, view event details, specify the number of events to view, use the app offline, and see data visualizations of upcoming events.
 
+## Table of Contents
+
+- [Features](#features)
+  - [Filter events by city](#filter-events-by-city)
+  - [Show/hide event details](#showhide-event-details)
+  - [Specify number of events](#specify-number-of-events)
+  - [Use the app offline](#use-the-app-offline)
+  - [Data visualization](#data-visualization)
+- [Components](#components)
+  - [App.js](#appjs)
+  - [Api.js](#apijs)
+  - [CitySearch.js](#citysearchjs)
+  - [Event.js](#eventjs)
+  - [EventGenre.js](#eventgenrejs)
+  - [EventList.js](#eventlistjs)
+  - [mock-data.js](#mock-datajs)
+  - [NumberOfEvents.js](#numberofeventsjs)
+  - [WelcomeScreen.jsx](#welcomescreenjsx)
+- [Conclusion](#conclusion)
+
 ## Features
 
 - Filter events by city
