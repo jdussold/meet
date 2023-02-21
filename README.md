@@ -116,6 +116,8 @@ The component maintains an internal state with the number of events to display a
 
 ### WelcomeScreen.jsx
 
+![WelcomeScreen](/src/img/WelcomeScreen.png)
+
 The `WelcomeScreen.jsx` component is a function-based component that displays a welcome screen to the user, with an invitation to log in to see upcoming events around the world for full-stack developers. This component also includes a button that allows the user to log in using Google authentication, and a link to the app's privacy policy.
 
 The component takes a prop called `showWelcomeScreen` which determines whether to show the welcome screen or not. If `showWelcomeScreen` is `true`, the welcome screen will be displayed; otherwise, nothing will be rendered.
