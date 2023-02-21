@@ -262,8 +262,8 @@ h1 {
 
 @media only screen and (max-width: 767px) {
   .event-card {
-    max-width: 90%;
-    margin: 10px auto;
+    max-width: 100%;
+    margin-bottom: 20px;
   }
 
   .event-card .card-header {
@@ -279,7 +279,7 @@ h1 {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px), screen and (max-width: 1399px) {
   .data-vis-wrapper {
     flex-direction: row;
   }
@@ -289,14 +289,6 @@ h1 {
     min-width: auto;
     margin: 0 auto;
   }
-  .event-card {
-    width: 100%;
-    max-width: 696px;
-    margin-bottom: 20px;
-  }
-}
-
-@media only screen and (max-width: 1399px) {
   .EventList {
     display: flex;
     flex-wrap: wrap;
@@ -304,12 +296,20 @@ h1 {
   }
   .event-card {
     width: 100%;
-    max-width: 696px;
     margin-bottom: 20px;
   }
 }
 
 @media only screen and (min-width: 1400px) {
+  .data-vis-wrapper {
+    flex-direction: row;
+  }
+  .data-vis-wrapper .recharts-responsive-container {
+    flex-basis: 50%;
+    max-width: 50%;
+    min-width: auto;
+    margin: 0 auto;
+  }
   .EventList {
     display: flex;
     flex-wrap: wrap;
