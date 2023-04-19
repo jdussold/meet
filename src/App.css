@@ -55,6 +55,8 @@ h1 {
   transition: all 0.4s ease 0s;
   min-width: 10rem;
   margin: 1rem;
+  width: 184px;
+  height: 42px;
 }
 
 .login-button:hover {
@@ -72,6 +74,8 @@ h1 {
   display: inline-block;
   padding-right: 10px;
   vertical-align: middle;
+  width: 40px;
+  height: 40px;
 }
 
 .display-block {
