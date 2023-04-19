@@ -20,7 +20,6 @@ function WelcomeScreen(props) {
           rel="nofollow noopener"
           className="login-button"
         >
-          {/* Add a Google icon and label to the button */}
           <div className="google-icon-wrapper">
             <img
               className="google-icon"
@@ -29,7 +28,7 @@ o.svg"
               alt="Google sign-in"
             />
           </div>
-          <b>Sign in with google</b>
+          <div style={{ flex: 1 }}>Login with Google</div>
         </button>
       </div>
       {/* Add a link to the privacy policy */}
