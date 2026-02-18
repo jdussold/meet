@@ -67,6 +67,9 @@
     "nth-check": "^2.1.1",
     "postcss": "^8.4.49",
     "jws": "^4.0.0",
-    "webpack-dev-server": "^5.1.0"
+    "webpack-dev-server": "^5.1.0",
+    "bfj": {
+      "jsonpath": "npm:@astronautlabs/jsonpath@^1.1.2"
+    }
   }
 }
