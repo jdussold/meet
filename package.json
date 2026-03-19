@@ -70,6 +70,7 @@
     "webpack-dev-server": "^5.1.0",
     "bfj": {
       "jsonpath": "npm:@astronautlabs/jsonpath@^1.1.2"
-    }
+    },
+    "flatted": "^3.4.1"
   }
 }
