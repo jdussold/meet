@@ -34,6 +34,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "dev": "vite",
+    "build:vite": "vite build",
+    "preview": "vite preview",
+    "test:vitest": "vitest run",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "postinstall": "find node_modules -path '*/.claude' -type d -exec rm -rf {} +"
@@ -58,9 +62,15 @@
   },
   "devDependencies": {
     "@testing-library/react": "^16.1.0",
+    "@vitejs/plugin-react": "^5.2.0",
+    "@vitest/ui": "^4.1.5",
     "gh-pages": "^6.2.0",
     "jest-cucumber": "^4.5.0",
-    "puppeteer": "^24.40.0"
+    "jsdom": "^29.1.1",
+    "puppeteer": "^24.40.0",
+    "vite": "^7.3.2",
+    "vite-plugin-pwa": "^1.2.0",
+    "vitest": "^4.1.5"
   },
   "overrides": {
     "node-forge": "^1.3.1",
