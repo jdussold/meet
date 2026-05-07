@@ -23,8 +23,7 @@ function WelcomeScreen(props) {
           <div className="google-icon-wrapper">
             <img
               className="google-icon"
-              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Log
-o.svg"
+              src={`${import.meta.env.BASE_URL}google-g-logo.svg`}
               alt="Google sign-in"
             />
           </div>

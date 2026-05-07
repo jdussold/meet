@@ -1,7 +1,21 @@
 // Importing required dependencies
 import { mockData } from "./mock-data";
-import axios from "axios";
 import NProgress from "nprogress";
+
+// The original CareerFoundry-course AWS Lambda backend is no longer hosted
+// (account recycled). DEMO_MODE short-circuits all auth/event-fetch calls
+// to return mockData so the deployed site is demo-able as a portfolio
+// piece. The full OAuth code paths remain below for architectural
+// reference. Flip to false if the backend ever comes back.
+const DEMO_MODE = true;
+
+if (
+  DEMO_MODE &&
+  typeof window !== "undefined" &&
+  !localStorage.getItem("access_token")
+) {
+  localStorage.setItem("access_token", "demo-mode");
+}
 
 // This function takes an events array, then uses map to create a new array with only locations.
 // It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
@@ -14,6 +28,8 @@ export const extractLocations = (events) => {
 
 // This function checks if the provided access token is valid by making a GET request to the Google OAuth API.
 export const checkToken = async (accessToken) => {
+  if (DEMO_MODE) return { audience: "demo-mode" };
+
   const result = await fetch(
     `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
   )
@@ -63,6 +79,8 @@ const getToken = async (code) => {
 // If the authorization code is not present, the function will redirect the user to the Google OAuth authorization page.
 // The function returns the access token if it is valid and present, or the newly obtained access token if the code was exchanged successfully.
 export const getAccessToken = async () => {
+  if (DEMO_MODE) return "demo-mode";
+
   const accessToken = localStorage.getItem("access_token");
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
@@ -71,11 +89,18 @@ export const getAccessToken = async () => {
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
     if (!code) {
-      const results = await axios.get(
+      const result = await fetch(
         "https://6cl0o2ra2b.execute-api.us-east-2.amazonaws.com/dev/api/get-auth-url"
-      );
-      const { authUrl } = results.data;
-      return (window.location.href = authUrl);
+      )
+        .then((res) => res.json())
+        .catch((error) => {
+          console.error("get-auth-url failed:", error);
+          return null;
+        });
+      if (result?.authUrl) {
+        return (window.location.href = result.authUrl);
+      }
+      return;
     }
     return code && getToken(code);
   }
@@ -88,6 +113,11 @@ export const getAccessToken = async () => {
 // If the user is online and has a valid access token, the function retrieves a list of events from the backend API and returns them.
 export const getEvents = async () => {
   NProgress.start();
+
+  if (DEMO_MODE) {
+    NProgress.done();
+    return mockData;
+  }
 
   if (window.location.href.startsWith("http://localhost")) {
     NProgress.done();
@@ -107,13 +137,15 @@ export const getEvents = async () => {
       "https://6cl0o2ra2b.execute-api.us-east-2.amazonaws.com/dev/api/get-events" +
       "/" +
       token;
-    const result = await axios.get(url);
-    if (result.data) {
-      var locations = extractLocations(result.data.events);
-      localStorage.setItem("lastEvents", JSON.stringify(result.data));
+    const data = await fetch(url)
+      .then((res) => res.json())
+      .catch((error) => error);
+    if (data) {
+      var locations = extractLocations(data.events);
+      localStorage.setItem("lastEvents", JSON.stringify(data));
       localStorage.setItem("locations", JSON.stringify(locations));
     }
     NProgress.done();
-    return result.data.events;
+    return data.events;
   }
 };

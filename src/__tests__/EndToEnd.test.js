@@ -1,9 +1,12 @@
 import puppeteer from "puppeteer";
 
-describe("show/hide an event details", () => {
+// Skipped by default — requires:
+//   1. `npm run dev` running in another terminal (Vite serves at /meet/)
+//   2. Puppeteer Chrome installed: `npx puppeteer browsers install chrome`
+// Remove `.skip` to run.
+describe.skip("show/hide an event details", () => {
   let browser;
   let page;
-  jest.setTimeout(30000);
   beforeAll(async () => {
     browser = await puppeteer.launch({
       headless: false,
@@ -11,9 +14,9 @@ describe("show/hide an event details", () => {
       ignoreDefaultArgs: ["--disable-extensions"], // ignores default setting that causes timeout errors
     });
     page = await browser.newPage();
-    await page.goto("http://localhost:3000/");
+    await page.goto("http://localhost:3000/meet/");
     await page.waitForSelector(".event");
-  });
+  }, 30000);
 
   afterAll(() => {
     browser.close();
