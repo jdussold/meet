@@ -1,6 +1,5 @@
 // Importing required dependencies
 import { mockData } from "./mock-data";
-import axios from "axios";
 import NProgress from "nprogress";
 
 // This function takes an events array, then uses map to create a new array with only locations.
@@ -71,10 +70,11 @@ export const getAccessToken = async () => {
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
     if (!code) {
-      const results = await axios.get(
+      const { authUrl } = await fetch(
         "https://6cl0o2ra2b.execute-api.us-east-2.amazonaws.com/dev/api/get-auth-url"
-      );
-      const { authUrl } = results.data;
+      )
+        .then((res) => res.json())
+        .catch((error) => error);
       return (window.location.href = authUrl);
     }
     return code && getToken(code);
@@ -107,13 +107,15 @@ export const getEvents = async () => {
       "https://6cl0o2ra2b.execute-api.us-east-2.amazonaws.com/dev/api/get-events" +
       "/" +
       token;
-    const result = await axios.get(url);
-    if (result.data) {
-      var locations = extractLocations(result.data.events);
-      localStorage.setItem("lastEvents", JSON.stringify(result.data));
+    const data = await fetch(url)
+      .then((res) => res.json())
+      .catch((error) => error);
+    if (data) {
+      var locations = extractLocations(data.events);
+      localStorage.setItem("lastEvents", JSON.stringify(data));
       localStorage.setItem("locations", JSON.stringify(locations));
     }
     NProgress.done();
-    return result.data.events;
+    return data.events;
   }
 };
